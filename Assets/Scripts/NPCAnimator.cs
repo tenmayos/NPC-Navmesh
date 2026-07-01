@@ -6,4 +6,9 @@ public class NPCAnimator : NPCComponent
     {
         npc.Animator.SetFloat("Speed", npc.CurrentSpeed);
     }
+
+    public void OnFootstep() // Left here because there is an animation event slapped ontop of the animation itself.
+    {
+
+    }
 }

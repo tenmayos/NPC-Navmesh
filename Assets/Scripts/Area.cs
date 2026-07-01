@@ -5,12 +5,6 @@ public class Area : MonoBehaviour
 {
     public float Radius = 20f;
     public float maxDistance = 2f;
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, Radius);
-    }
-
     public Vector3 GetRandomPoint()
     {
         var randomDirection = Random.insideUnitSphere * Radius;
@@ -20,11 +14,17 @@ public class Area : MonoBehaviour
         Vector3 randomPoint = transform.position + randomDirection;
         Vector3 finalPosition = transform.position;
 
-        if (NavMesh.SamplePosition(randomPoint, out var navHit, maxDistance, 1))
+        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit navHit, maxDistance, 1))
         {
             finalPosition = navHit.position;
         }
 
         return finalPosition;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, Radius);
     }
 }
