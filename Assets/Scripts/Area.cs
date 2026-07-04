@@ -22,9 +22,11 @@ public class Area : MonoBehaviour
         return finalPosition;
     }
 
+    [Header("Debugging")]
+    [SerializeField] private Color areaColor = Color.blue;
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = areaColor;
         Gizmos.DrawWireSphere(transform.position, Radius);
     }
 }

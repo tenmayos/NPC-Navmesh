@@ -23,6 +23,11 @@ public class NPCWander : NPCComponent
 
     private void Start()
     {
+        if (npc.Wander == false)
+        {
+            return;
+        }
+
         if (Random.Range(0f, 100f) > 50f)
         {
             ChangeState(EState.Wandering);
@@ -34,6 +39,9 @@ public class NPCWander : NPCComponent
     }
     private void Update()
     {
+        if (npc.Wander == false)
+            return;
+
         if (state == EState.Waiting)
         {
             waitTime -= Time.deltaTime;
